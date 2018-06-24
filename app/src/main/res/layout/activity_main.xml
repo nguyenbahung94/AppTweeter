@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="User"
+            type="com.example.billy.apptweeter.model.Message" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="@dimen/mainactivity_item_padding_5dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/mLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/mLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/mainactivity_tv_height_60dp"
+            android:layout_marginBottom="@dimen/mainactivity_margin_5dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <EditText
+                android:id="@+id/tvmessage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mainactivity_tv_height_60dp"
+                android:layout_margin="@dimen/mainactivity_margin_5dp"
+                android:layout_toLeftOf="@id/btnSend"
+                android:layout_toStartOf="@id/btnSend"
+                android:background="@drawable/background_message"
+                android:gravity="top"
+                android:hint="@string/edt_hint_message"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:padding="@dimen/mainactivity_tv_padding_5dp"
+                android:scrollbars="horizontal"
+                android:text="@{User.messsage}"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/mainactivity_btn_height_40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/mainactivity_margin_5dp"
+                android:layout_marginRight="@dimen/mainactivity_margin_5dp"
+                android:background="@drawable/background_btn"
+                android:text="@string/btn_send"
+                android:textColor="@color/color_blue" />
+        </RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

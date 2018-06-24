@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppTweeter</string>
+    <string name="btn_send">send</string>
+    <string name="edt_hint_message">message</string>
+</resources>
