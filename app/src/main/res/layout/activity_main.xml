@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
+            android:background="#d6eff2"
             android:id="@+id/mRecycleView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -44,8 +45,9 @@
                 android:maxLines="3"
                 android:padding="@dimen/mainactivity_tv_padding_5dp"
                 android:scrollbars="horizontal"
-                android:text="@{User.messsage}"
-                android:textSize="12sp" />
+                android:text="@{User.message}"
+                android:textSize="@dimen/tvsize_14sp"
+                tools:text="hello there"/>
 
             <Button
                 android:id="@+id/btnSend"
@@ -58,6 +60,7 @@
                 android:layout_marginRight="@dimen/mainactivity_margin_5dp"
                 android:background="@drawable/background_btn"
                 android:text="@string/btn_send"
+                android:onClick="onClickAddMessage"
                 android:textColor="@color/color_blue" />
         </RelativeLayout>
 

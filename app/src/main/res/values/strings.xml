@@ -2,4 +2,7 @@
     <string name="app_name">AppTweeter</string>
     <string name="btn_send">send</string>
     <string name="edt_hint_message">message</string>
+    <string name="toast_error_cant_be_empty">Message can\'t be empty</string>
+    <string name="toast_error_input_invalid">Input invalid,Please try again</string>
+    <string name="toast_error_only_space">Message need contain characters</string>
 </resources>

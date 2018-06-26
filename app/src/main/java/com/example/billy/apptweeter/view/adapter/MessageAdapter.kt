@@ -1,4 +1,4 @@
-package com.example.billy.apptweeter.view
+package com.example.billy.apptweeter.view.adapter
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
@@ -9,9 +9,9 @@ import com.example.billy.apptweeter.databinding.ItemMessageBinding
 import com.example.billy.apptweeter.model.Message
 import com.example.billy.apptweeter.viewmodel.MessageViewModel
 
-class MessageAdapter(private val mListMessage: List<Message>) : RecyclerView.Adapter<MessageAdapter.BindingHolder>() {
+class MessageAdapter(private val mListMessage: MutableList<Message>) : RecyclerView.Adapter<MessageAdapter.BindingHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BindingHolder {
-        var binding = DataBindingUtil.inflate<ItemMessageBinding>(LayoutInflater.from(parent.context), R.layout.item_message, parent, false)
+        val binding = DataBindingUtil.inflate<ItemMessageBinding>(LayoutInflater.from(parent.context), R.layout.item_message, parent, false)
         return BindingHolder(binding)
     }
 

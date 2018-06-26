@@ -8,9 +8,9 @@ import com.example.billy.apptweeter.model.Message
 class MessageViewModel(private val message: Message) : BaseObservable() {
     var getMessage: String?
         @Bindable
-        get() = message.messsage
+        get() = message.message
         set(value) {
-            message.messsage = value
+            message.message = value
             notifyPropertyChanged(BR.getMessage)
         }
 }
