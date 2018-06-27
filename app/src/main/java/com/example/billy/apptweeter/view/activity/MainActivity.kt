@@ -1,10 +1,13 @@
 package com.example.billy.apptweeter.view.activity
 
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -19,15 +22,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvMessage: EditText
     private var adapter: MessageAdapter? = null
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mViewModel: SaveDataViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mViewModel = ViewModelProviders.of(this).get(SaveDataViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val layoutManager = LinearLayoutManager(this)
-
         binding.mRecycleView.layoutManager = layoutManager
         tvMessage = this.findViewById(R.id.tvmessage)
-        // var messages = TestMessages.mockMessageData
 
+        // var messages = TestMessages.mockMessageData
         adapter = MessageAdapter(mListMessage)
         binding.mRecycleView.adapter = adapter
         binding.mRecycleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -35,7 +39,32 @@ class MainActivity : AppCompatActivity() {
                 hideKeyboard(recyclerView!!, this@MainActivity)
             }
         })
+        setUpdataToUI()
+    }
 
+    private fun setUpdataToUI() {
+        if (!mViewModel.message.isEmpty()) {
+            tvMessage.text = Editable.Factory.getInstance().newEditable(mViewModel.gettMessages())
+            Log.e("tvMessage", tvMessage.text.toString()+"nothing")
+        }
+        if (mViewModel.mListMessage.value != null) {
+            mListMessage.addAll(mViewModel.mListMessage.value!!)
+            adapter!!.notifyDataSetChanged()
+            Log.e("mListMessage", mListMessage.size.toString()+"nothing")
+        }
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mViewModel.setMessages(tvMessage.text.toString())
+        mViewModel.mListMessage.value = mListMessage
+    }
+
+    override fun onDestroy() {
+        mViewModel.mListMessage.value = null
+        mViewModel.message = ""
+        super.onDestroy()
     }
 
     /*
