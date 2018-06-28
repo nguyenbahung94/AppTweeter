@@ -74,18 +74,6 @@ not contain space and length more than 50 will return true
 fun hasSpace(message: String): Boolean {
     return !message.contains(' ') && message.length > 50
 }
-
-/*
-contain any character or number
-* */
-fun containCharacter(message: String): Boolean {
-    val letter = Pattern.compile("[a-zA-z]")
-    val digit = Pattern.compile("[0-9]")
-    val hasLetter = letter.matcher(message)
-    val hasDigit = digit.matcher(message)
-    return hasLetter.find() || hasDigit.find()
-}
-
 /*
 * hide keyboard when scrolling recycleview
 * */

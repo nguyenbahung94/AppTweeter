@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     * */
     fun onClickAddMessage(view: View) {
         if (!tvMessage.text.isEmpty()) {
-            if (!containCharacter(tvMessage.text.toString())) {
+            if (tvMessage.text.trim().isEmpty()) {
                 Toast.makeText(this, getString(R.string.toast_error_only_space), Toast.LENGTH_SHORT).show()
                 return
             }

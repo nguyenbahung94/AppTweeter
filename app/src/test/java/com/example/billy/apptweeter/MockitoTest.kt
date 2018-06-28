@@ -18,15 +18,6 @@ class MockitoTest {
     }
 
     @Test
-    fun testContainCharacter() {
-        val messageOnlySpace = "              "
-        Assert.assertEquals(containCharacter(messageOnlySpace), false)
-
-        val messageContainCharacter = "I believe it"
-        Assert.assertEquals(containCharacter(messageContainCharacter), true)
-    }
-
-    @Test
     fun testSplitMessage() {
         val messageCase1 = "I believe it I believe it I believe it"
         Assert.assertEquals(splitMessage(messageCase1), messageCase1)
