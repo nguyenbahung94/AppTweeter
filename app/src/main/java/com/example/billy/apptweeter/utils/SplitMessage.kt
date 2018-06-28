@@ -5,6 +5,9 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import java.util.regex.Pattern
+import android.R.attr.password
+
+
 
 /*
 * slit message
@@ -76,7 +79,11 @@ fun hasSpace(message: String): Boolean {
 contain any character or number
 * */
 fun containCharacter(message: String): Boolean {
-    return Pattern.matches(".*[a-zA-Z].*", message) || Pattern.matches(".*[0-9].*", message)
+    val letter = Pattern.compile("[a-zA-z]")
+    val digit = Pattern.compile("[0-9]")
+    val hasLetter = letter.matcher(message)
+    val hasDigit = digit.matcher(message)
+    return hasLetter.find() || hasDigit.find()
 }
 
 /*

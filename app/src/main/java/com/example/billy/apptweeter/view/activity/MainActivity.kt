@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     * note :if message contain only space I will show message error
     * remove space before start and end of message only keep space between small string of message
     * */
-    fun onClickAddMessage(view:View) {
+    fun onClickAddMessage(view: View) {
         if (!tvMessage.text.isEmpty()) {
             if (!containCharacter(tvMessage.text.toString())) {
                 Toast.makeText(this, getString(R.string.toast_error_only_space), Toast.LENGTH_SHORT).show()
@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                 msg.message = splitMessage(tvMessage.text.toString().trim())
                 mListMessage.add(msg)
                 adapter!!.notifyDataSetChanged()
+                tvMessage.text.clear()
             }
         } else {
             Toast.makeText(this, getString(R.string.toast_error_cant_be_empty), Toast.LENGTH_SHORT).show()
