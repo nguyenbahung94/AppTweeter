@@ -1,6 +1,5 @@
 package com.example.billy.apptweeter
 
-import com.example.billy.apptweeter.utils.containCharacter
 import com.example.billy.apptweeter.utils.hasSpace
 import com.example.billy.apptweeter.utils.splitMessage
 import org.junit.Assert
