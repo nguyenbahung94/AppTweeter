@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         binding.mRecycleView.layoutManager = layoutManager
         tvMessage = this.findViewById(R.id.tvmessage)
 
-        // var messages = TestMessages.mockMessageData
         adapter = MessageAdapter(mListMessage)
         binding.mRecycleView.adapter = adapter
         binding.mRecycleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -39,18 +37,16 @@ class MainActivity : AppCompatActivity() {
                 hideKeyboard(recyclerView!!, this@MainActivity)
             }
         })
-        setUpdataToUI()
+        setUpDataToUI()
     }
 
-    private fun setUpdataToUI() {
+    private fun setUpDataToUI() {
         if (!mViewModel.message.isEmpty()) {
-            tvMessage.text = Editable.Factory.getInstance().newEditable(mViewModel.gettMessages())
-            Log.e("tvMessage", tvMessage.text.toString()+"nothing")
+            tvMessage.text = Editable.Factory.getInstance().newEditable(mViewModel.getMessages())
         }
         if (mViewModel.mListMessage.value != null) {
             mListMessage.addAll(mViewModel.mListMessage.value!!)
             adapter!!.notifyDataSetChanged()
-            Log.e("mListMessage", mListMessage.size.toString()+"nothing")
         }
 
     }
@@ -71,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     * note :if message contain only space I will show message error
     * remove space before start and end of message only keep space between small string of message
     * */
-    fun onClickAddMessage(view: View) {
+    fun onClickAddMessage(view:View) {
         if (!tvMessage.text.isEmpty()) {
             if (!containCharacter(tvMessage.text.toString())) {
                 Toast.makeText(this, getString(R.string.toast_error_only_space), Toast.LENGTH_SHORT).show()

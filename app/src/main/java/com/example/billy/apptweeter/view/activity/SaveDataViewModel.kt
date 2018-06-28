@@ -12,7 +12,7 @@ class SaveDataViewModel : ViewModel() {
         message = mgs
     }
 
-    fun gettMessages(): String {
+    fun getMessages(): String {
         return message
     }
 }

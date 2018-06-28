@@ -10,11 +10,10 @@ import java.util.regex.Pattern
 * slit message
 * */
 fun splitMessage(message: String): String {
-    var allMessage: String? = ""
+    val listSplitMessage = mutableListOf<String>()
     if (message.length <= 50) {
         return message
     } else {
-        val listSplitMessage = mutableListOf<String>()
         var dem = 0
         var itemMessage = ""
         var positionOfSpace = 0
@@ -50,23 +49,26 @@ fun splitMessage(message: String): String {
             }
 
         }
-        for (j in 0 until listSplitMessage.size) {
-            allMessage += when (j) {
-                0 -> "[" + '"' + "${j + 1}/${listSplitMessage.size} " + listSplitMessage[j] + '"'
-                listSplitMessage.size - 1 -> "," + '"' + " ${j + 1}/${listSplitMessage.size} " + listSplitMessage[j] + '"' + "]"
-                else -> "," + '"' + "${j + 1}/${listSplitMessage.size} " + listSplitMessage[j] + '"'
-            }
+    }
+    return joinListMessage(listSplitMessage)
+}
+
+private fun joinListMessage(listSplitMessage: MutableList<String>): String {
+    var allMessage = ""
+    for (j in 0 until listSplitMessage.size) {
+        allMessage += when (j) {
+            0 -> "[" + '"' + "${j + 1}/${listSplitMessage.size} " + listSplitMessage[j] + '"'
+            listSplitMessage.size - 1 -> "," + '"' + "${j + 1}/${listSplitMessage.size} " + listSplitMessage[j] + '"' + "]"
+            else -> "," + '"' + "${j + 1}/${listSplitMessage.size} " + listSplitMessage[j] + '"'
         }
     }
-    return allMessage!!
+    return allMessage
 }
 
 /*
-not contain space and length more than 50
+not contain space and length more than 50 will return true
 * */
 fun hasSpace(message: String): Boolean {
-    var contain = message.contains(' ')
-    var leng = message.length > 50
     return !message.contains(' ') && message.length > 50
 }
 
